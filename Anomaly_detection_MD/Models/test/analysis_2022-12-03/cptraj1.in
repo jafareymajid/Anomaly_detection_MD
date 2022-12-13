@@ -1,0 +1,5 @@
+parm protein.parm7
+trajin md.nc
+rms ToFirst @CA= first out rmsd.txt mass
+run
+quit

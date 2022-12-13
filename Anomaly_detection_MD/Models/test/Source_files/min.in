@@ -1,0 +1,12 @@
+Energy minimization 
+&cntrl 
+imin=1, ntmin=0, maxcyc=200,   ! Minimization, method, number of cycles 
+ntpr=100,                         ! Print energies every ntpr steps
+ncyc=100,
+ntr=1,                          ! Use harmonic cartesian restraints 
+cut=9.0, 
+ntwx=0, 
+restraint_wt=10.0,              ! Restraint force kcal/mol
+restraintmask="(:1-13)&(@CA,N,O)",   !put restraint on protein backbone
+&end
+END

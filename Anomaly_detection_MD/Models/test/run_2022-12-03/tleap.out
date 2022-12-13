@@ -1,0 +1,106 @@
+-I: Adding /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/prep to search path.
+-I: Adding /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/lib to search path.
+-I: Adding /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/parm to search path.
+-I: Adding /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/cmd to search path.
+-s: Ignoring startup file: leaprc
+-f: Source tleap.in.
+
+Welcome to LEaP!
+Sourcing: ./tleap.in
+----- Source: ../envs/dat/leap/cmd/leaprc.water.opc
+----- Source of ../envs/dat/leap/cmd/leaprc.water.opc done
+Loading library: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/lib/atomic_ions.lib
+Loading library: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/lib/solvents.lib
+Loading parameters: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/parm/frcmod.opc
+Reading force field modification type file (frcmod)
+Reading title:
+Parameters for OPC water (JPCL, 2014, 5 (21), pp 3863–3871) 
+Loading parameters: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/parm/frcmod.ionsjc_tip4pew
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP4P/EW water from Joung & Cheatham JPCB (2008)
+Loading parameters: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/parm/frcmod.ions234lm_126_tip4pew
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of divalent to tetravalent ions for TIP4P/EW water model (12-6 normal usage set)
+----- Source: ../envs/dat/leap/cmd/leaprc.protein.ff14SB
+----- Source of ../envs/dat/leap/cmd/leaprc.protein.ff14SB done
+Log file: ./leap.log
+Loading parameters: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/parm/parm10.dat
+Reading title:
+PARM99 + frcmod.ff99SB + frcmod.parmbsc0 + OL3 for RNA
+Loading parameters: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/parm/frcmod.ff14SB
+Reading force field modification type file (frcmod)
+Reading title:
+ff14SB protein backbone and sidechain parameters
+Loading library: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/lib/amino12.lib
+Loading library: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/lib/aminoct12.lib
+Loading library: /mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/dat/leap/lib/aminont12.lib
+Loading PDB file: ./protein.pdb
+  total atoms in file: 260
+Adding 12 counter ions to "p" using 1A grid
+Grid extends from solute vdw + 6.49  to  12.40
+Resolution:      1.00 Angstrom.
+ (no solvent present)
+Calculating grid charges
+Placed Na+ in p at (10.35, 4.71, -11.33).
+Placed Cl- in p at (10.35, 8.71, -11.33).
+Placed Na+ in p at (10.35, 12.71, -11.33).
+Placed Cl- in p at (7.35, 14.71, -9.33).
+Placed Na+ in p at (3.35, 14.71, -9.33).
+Placed Cl- in p at (0.35, 12.71, -7.33).
+Placed Na+ in p at (7.35, 10.71, -9.33).
+Placed Cl- in p at (5.35, 12.71, -12.33).
+Placed Na+ in p at (3.35, 10.71, -15.33).
+Placed Cl- in p at (3.35, 6.71, -15.33).
+Placed Na+ in p at (3.35, 2.71, -15.33).
+Placed Cl- in p at (7.35, 2.71, -14.33).
+
+Done adding ions.
+Scaling up box by a factor of 1.273600 to meet diagonal cut criterion
+  Solute vdw bounding box:              31.188 26.428 21.337
+  Total bounding box for atom centers:  43.924 43.924 43.924
+      (box expansion for 'iso' is  44.6%)
+  Solvent unit box:                     18.865 18.478 19.006
+  Volume: 45331.886 A^3 (oct)
+  Total mass 21114.844 amu,  Density 0.773 g/cc
+  Added 1066 residues.
+Checking Unit.
+
+/mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/bin/teLeap: Warning!
+The unperturbed charge of the unit (6.000000) is not zero.
+
+/mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/bin/teLeap: Note.
+Ignoring the warnings from Unit Checking.
+
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 25 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CLYS	1
+	NILE	1
+  )
+ (no restraints)
+Writing pdb file: protein_solved.pdb
+   printing CRYST1 record to PDB file with box info
+
+/mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/bin/teLeap: Warning!
+ Converting N-terminal residue name to PDB format: NILE -> ILE
+
+/mnt/e/MSU/Fall2022/CMSE802/project/scripts/test_software/envs/bin/teLeap: Warning!
+ Converting C-terminal residue name to PDB format: CLYS -> LYS
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 3; Notes = 1.

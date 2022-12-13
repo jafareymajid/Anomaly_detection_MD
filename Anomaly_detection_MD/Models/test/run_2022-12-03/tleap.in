@@ -1,0 +1,16 @@
+#input parameters for a protein in water simulation
+
+source ../envs/dat/leap/cmd/leaprc.water.opc
+source ../envs/dat/leap/cmd/leaprc.protein.ff14SB
+p = loadpdb protein.pdb
+addions p Na+ 6 Cl- 6
+solvateoct p OPCBOX 5.0
+saveamberparm p protein.parm7 protein.rst7
+savepdb p protein_solved.pdb
+quit
+
+
+
+
+
+
