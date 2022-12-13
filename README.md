@@ -1,92 +1,105 @@
-# cmse802-Jafari_final
+About this software
+=======
+Molecular dynamics simulations are used to study the thermodynamic and dynamical behavior of molecules and their aggregates. In a typical simulation, the positions of all the atoms in the system are tracked at each time step. This produces a very large number of data points, which can be used to identify anomalous behavior. For example, if a molecule suddenly starts moving faster than expected, this could be an indication of an anomaly. Alternatively, if the distribution of atom positions suddenly changes, this could be a sign of an anomaly.
+In this project, the Isolation Forest algorithm is used to detect anomalies/outliers in Molecular Dynamics Simulation results (RMSD). 
+
+Authors
+=======
+Majid Jafari, 
+
+Department of Biochemistry and Molecular Biology, Michigan State University
+
+Installation
+=======
+**Requirements:**
+	
+	- Python 3.7 or above
+	- Numpy
+	- Matplotlib
+	- Ambertools
+	- ParmEd
+	- Scikit-learn
+	
+**First way (Simple and fast):**
+
+All you need to do is to run the following, it creates a new conda environment in the "envs" directory with the name "envs" and installs all the packages specified in the requirements.yml file (all the packages that you need to run the program). It then activates the newly created environment.
+
+`conda env create --prefix ./envs --file requirements.yml`
+
+`conda activate ./envs`
+
+Make sure you put the requirements.yml file in the current directory (repo directory) so conda can find it.
 
 
+**Second way:**
 
-## Getting started
+1. The code below creates a new conda environment with the specified packages installed in the directory specified by the "--prefix" flag. In this case, the environment will be located in the directory "./envs" and will include the packages python, matplotlib, and numpy. It then activates the environment, so that any packages installed in the environment can be used.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+`conda create --prefix ./envs python matplotlib numpy`
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+`conda activate ./envs`
 
-## Add your files
+2. After you activate the new environment, run one of the following:
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+`conda install -c conda-forge ambertools`
 
-```
-cd existing_repo
-git remote add origin https://gitlab.msu.edu/jafarima/cmse802-jafari_final.git
-git branch -M main
-git push -uf origin main
-```
+`conda install -c "conda-forge/label/cf202003" ambertools`
 
-## Integrate with your tools
+This code installs the Ambertools software package onto your new environment.
 
-- [ ] [Set up project integrations](https://gitlab.msu.edu/jafarima/cmse802-jafari_final/-/settings/integrations)
+3. The following will install the ParmEd library (Python-based molecular environment manipulation and analysis toolkit) into the current conda environment.
 
-## Collaborate with your team
+`conda install -c conda-forge parmed`
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
 
-## Test and Deploy
+4. The code below will install the scikit-learn, numpy, and matplotlib libraries or upgrade it to the latest version, if it is installed on the system.
 
-Use the built-in continuous integration in GitLab.
+`pip install -U scikit-learn`
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+`pip install numpy`
 
-***
+`conda install matplotlib`
 
-# Editing this README
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+To deactivate or remove the new environment (envs): 
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+`conda deactivate`
 
-## Name
-Choose a self-explaining name for your project.
+`rm -rf ./envs`
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Testing
+=======
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+This program is only tested on Linux operating system (Ubuntu and Mint distributions). The current program uses sander to run the simulations. So, if you want to run the simulations on GPU you should specify the path to the `pmemd.cuda` executable istead of `sander` in lines 64-70 of the `run.py` script.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+You can detect outliers for other numerical data like RMSF and Rg. To do that, you can change the command line in **line 44** of the **analysis.py** to the command line of interest. Please note that in the script I used **CPPTRAJ** to do the analyses. So, make sure to use the cpptraj command lines.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+**Important notes:**
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+	- You should modify the tleap.in file in the source folder based on your simulation system.
+	- You should change the min.in, heat.in, eq.in, and md.in flags based on your simulation system.
+	- I used a small peptide to test the scripts. So, make sure to put your protein coordiinates file (pdb file) in the source directory.
+	- Please create the input files of your system with the same file names in the source directory.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+All you need to do is to run the following command after activating the conda environment:
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+To use the scripts, you must first activate the conda environment by `conda activate name` and then run:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+`python main.py`
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+It will then continue to do the calculation by using:
+ 
+	- Sander (basic MD engine of AMBER) to perform the simulations.
+	- CPPTRAJ to do the analysis (RMSD here).
+	- Isolation Forest algorithm to detect anomalies.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+You can find all the output and input files of the testing in the Models/test folder. By the way, you can run a test simulation by using the input parameters in the Models/Source_files. You should just navigate to the Models folder and run `python main.py`. The simulation length is 50 ps, just for test purposes. As I mentioned, you should modify the input files based on your simulation system.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Additinal information
+=======
+**Isolation Forest** is an unsupervised learning algorithm that isolates anomalies by randomly selecting a feature and then randomly selecting a split value between the maximum and minimum values of the selected feature. The algorithm then isolates the anomalies by creating shorter paths for them in the decision tree.
 
-## License
-For open source projects, say how it is licensed.
+**Scikit-learn** is a Python library for machine learning built on top of NumPy, SciPy and matplotlib. It provides a wide range of tools for data analysis and machine learning, including classification, regression, clustering and model selection algorithms.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+**Ambertools** is a suite of programs for molecular mechanics and molecular dynamics simulations, as well as tools for modeling, analysis, and visualization of biopolymers.
+
