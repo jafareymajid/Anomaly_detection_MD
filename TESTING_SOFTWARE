@@ -1,0 +1,27 @@
+Testing
+=======
+
+This program is only tested on Linux operating system (Ubuntu and Mint distributions). The current program uses sander to run the simulations. So, if you want to run the simulations on GPU you should specify the path to the `pmemd.cuda` executable istead of `sander` in lines 64-70 of the `run.py` script.
+
+You can detect outliers for other numerical data like RMSF and Rg. To do that, you can change the command line in **line 44** of the **analysis.py** to the command line of interest. Please note that in the script I used **CPPTRAJ** to do the analyses. So, make sure to use the cpptraj command lines.
+
+**Important notes:**
+
+	- You should modify the tleap.in file in the source folder based on your simulation system.
+	- You should change the min.in, heat.in, eq.in, and md.in flags based on your simulation system.
+	- I used a small peptide to test the scripts. So, make sure to put your protein coordiinates file (pdb file) in the source directory.
+	- Please create the input files of your system with the same file names in the source directory.
+
+All you need to do is to run the following command after activating the conda environment:
+
+To use the scripts, you must first activate the conda environment by `conda activate name` and then run:
+
+`python main.py`
+
+It will then continue to do the calculation by using:
+ 
+	- Sander (basic MD engine of AMBER) to perform the simulations.
+	- CPPTRAJ to do the analysis (RMSD here).
+	- Isolation Forest algorithm to detect anomalies.
+
+You can see an output example of the script in the doc folder (detected_anomalies.tif). The results are the outliers detected in the RMSD analysis of a protein after 1 microseconds of MD simulations. Due to file size limits the trajectories are not included. By the way, you can run a test simulation by using the input files in the source folder (just run`python main.py`). The simulation length is 50 ps, just for test purposes. As I mentioned, you should modify the input files based on your simulation system. 	
